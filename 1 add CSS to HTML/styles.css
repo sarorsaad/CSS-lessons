@@ -1,0 +1,36 @@
+/* This is our external CSS file */
+
+/* Styling for the external CSS example */
+.external-style {
+    color: green;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Styling for our fun box */
+.fun-box {
+    background-color: #f0f0f0;
+    border: 3px solid purple;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.fun-box h2 {
+    color: purple;
+}
+
+/* Making the page look nice */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+h1 {
+    color: #ff6b6b;
+    text-align: center;
+}
