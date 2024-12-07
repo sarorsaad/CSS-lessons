@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Quiz 2 - Basic Concepts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e1e4e8;
+            border-radius: 5px;
+        }
+
+        .question {
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+            font-family: inherit;
+            font-size: inherit;
+            width: 100%;
+            display: block;
+        }
+
+        .option:hover {
+            background-color: #e9ecef;
+        }
+
+        .option.selected {
+            background-color: #cce5ff;
+            border-color: #b8daff;
+        }
+
+        .option.correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .option.wrong {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .feedback.wrong {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .score-display {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: none;
+        }
+
+        .score-display.show {
+            display: block;
+            background-color: #e9ecef;
+        }
+
+        @media (max-width: 600px) {
+            .quiz-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>CSS Quiz 2: Basic Concepts</h1>
+        
+        <div class="question-container" data-correct="c">
+            <div class="question">1. What does CSS stand for?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) Computer Style System</button>
+                <button class="option" data-option="b">b) Creative Style Sheets</button>
+                <button class="option" data-option="c">c) Cascading Style Sheets</button>
+                <button class="option" data-option="d">d) Colorful Style System</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="a">
+            <div class="question">2. Which property changes text color?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) color</button>
+                <button class="option" data-option="b">b) text-color</button>
+                <button class="option" data-option="c">c) font-color</button>
+                <button class="option" data-option="d">d) text-style</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="b">
+            <div class="question">3. How do you select an element with class="blue"?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) #blue</button>
+                <button class="option" data-option="b">b) .blue</button>
+                <button class="option" data-option="c">c) @blue</button>
+                <button class="option" data-option="d">d) *blue</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="d">
+            <div class="question">4. Which property adds space inside an element?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) spacing</button>
+                <button class="option" data-option="b">b) margin</button>
+                <button class="option" data-option="c">c) space</button>
+                <button class="option" data-option="d">d) padding</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="a">
+            <div class="question">5. Which property changes the background color?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) background-color</button>
+                <button class="option" data-option="b">b) color-background</button>
+                <button class="option" data-option="c">c) bg-color</button>
+                <button class="option" data-option="d">d) color</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="c">
+            <div class="question">6. Which property changes text size?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) text-size</button>
+                <button class="option" data-option="b">b) size</button>
+                <button class="option" data-option="c">c) font-size</button>
+                <button class="option" data-option="d">d) text-style</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="b">
+            <div class="question">7. How do you make text bold?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) text-style: bold;</button>
+                <button class="option" data-option="b">b) font-weight: bold;</button>
+                <button class="option" data-option="c">c) text: bold;</button>
+                <button class="option" data-option="d">d) bold: true;</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="c">
+            <div class="question">8. Which property changes text alignment?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) align</button>
+                <button class="option" data-option="b">b) text-position</button>
+                <button class="option" data-option="c">c) text-align</button>
+                <button class="option" data-option="d">d) position</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="d">
+            <div class="question">9. Which value makes a flex container?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) display: flexible;</button>
+                <button class="option" data-option="b">b) display: flexbox;</button>
+                <button class="option" data-option="c">c) flex: true;</button>
+                <button class="option" data-option="d">d) display: flex;</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="a">
+            <div class="question">10. Which adds space outside an element?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) margin</button>
+                <button class="option" data-option="b">b) padding</button>
+                <button class="option" data-option="c">c) spacing</button>
+                <button class="option" data-option="d">d) border</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="b">
+            <div class="question">11. What is the correct order in background shorthand?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) image, color, repeat, position</button>
+                <button class="option" data-option="b">b) color, image, repeat, position</button>
+                <button class="option" data-option="c">c) position, color, image, repeat</button>
+                <button class="option" data-option="d">d) repeat, position, color, image</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="c">
+            <div class="question">12. Which is the correct background shorthand syntax?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) background: url(img.jpg) #000 repeat center;</button>
+                <button class="option" data-option="b">b) background: center no-repeat #000;</button>
+                <button class="option" data-option="c">c) background: #000 url(img.jpg) no-repeat center;</button>
+                <button class="option" data-option="d">d) background: center #000 url(img.jpg);</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <button class="submit-btn">Submit Quiz</button>
+        <div class="score-display"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const options = document.querySelectorAll('.option');
+            const submitBtn = document.querySelector('.submit-btn');
+            const scoreDisplay = document.querySelector('.score-display');
+            let score = 0;
+
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from siblings
+                    const siblings = this.parentElement.querySelectorAll('.option');
+                    siblings.forEach(sib => {
+                        sib.classList.remove('selected', 'correct', 'wrong');
+                    });
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                });
+            });
+
+            submitBtn.addEventListener('click', function() {
+                score = 0;
+                const questionContainers = document.querySelectorAll('.question-container');
+                
+                questionContainers.forEach(container => {
+                    const selectedOption = container.querySelector('.option.selected');
+                    const correctAnswer = container.dataset.correct;
+                    const feedback = container.querySelector('.feedback');
+                    
+                    // Clear previous feedback
+                    container.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('correct', 'wrong');
+                    });
+                    
+                    if (selectedOption) {
+                        const selectedValue = selectedOption.dataset.option;
+                        
+                        if (selectedValue === correctAnswer) {
+                            selectedOption.classList.add('correct');
+                            feedback.textContent = 'Correct!';
+                            feedback.className = 'feedback correct show';
+                            score++;
+                        } else {
+                            selectedOption.classList.add('wrong');
+                            const correctOption = container.querySelector(`[data-option="${correctAnswer}"]`);
+                            correctOption.classList.add('correct');
+                            feedback.textContent = 'Wrong! The correct answer is shown in green.';
+                            feedback.className = 'feedback wrong show';
+                        }
+                    } else {
+                        feedback.textContent = 'Please select an answer!';
+                        feedback.className = 'feedback wrong show';
+                    }
+                });
+
+                // Update and show score display
+                scoreDisplay.textContent = `Your Score: ${score} out of 12 (${(score/12*100).toFixed(0)}%)`;
+                scoreDisplay.className = 'score-display show';
+            });
+        });
+    </script>
+</body>
+</html>

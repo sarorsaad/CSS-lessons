@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Quiz 3 - Selectors and Properties</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e1e4e8;
+            border-radius: 5px;
+        }
+
+        .question {
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+            font-family: inherit;
+            font-size: inherit;
+            width: 100%;
+            display: block;
+        }
+
+        .option:hover {
+            background-color: #e9ecef;
+        }
+
+        .option.selected {
+            background-color: #cce5ff;
+            border-color: #b8daff;
+        }
+
+        .option.correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .option.wrong {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .feedback.wrong {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .score-display {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: none;
+        }
+
+        .score-display.show {
+            display: block;
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>CSS Quiz 3: Selectors and Properties</h1>
+        
+        <div class="question-container" data-correct="b">
+            <div class="question">1. What is the correct CSS syntax structure?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) selector { value: property; }</button>
+                <button class="option" data-option="b">b) selector { property: value; }</button>
+                <button class="option" data-option="c">c) value { selector: property; }</button>
+                <button class="option" data-option="d">d) property { selector: value; }</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="c">
+            <div class="question">2. Which selector targets all elements on a page?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) .all</button>
+                <button class="option" data-option="b">b) #all</button>
+                <button class="option" data-option="c">c) * { }</button>
+                <button class="option" data-option="d">d) all { }</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="a">
+            <div class="question">3. How do you select an element with id="header"?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) #header</button>
+                <button class="option" data-option="b">b) .header</button>
+                <button class="option" data-option="c">c) *header</button>
+                <button class="option" data-option="d">d) header</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="d">
+            <div class="question">4. Which selector targets a list item inside an unordered list?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) ul + li</button>
+                <button class="option" data-option="b">b) ul ~ li</button>
+                <button class="option" data-option="c">c) li, ul</button>
+                <button class="option" data-option="d">d) ul > li</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="b">
+            <div class="question">5. Which property is used to change the font size?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) text-size</button>
+                <button class="option" data-option="b">b) font-size</button>
+                <button class="option" data-option="c">c) size</button>
+                <button class="option" data-option="d">d) text-style</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="c">
+            <div class="question">6. What property is used to make text italic?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) text-style</button>
+                <button class="option" data-option="b">b) text-type</button>
+                <button class="option" data-option="c">c) font-style</button>
+                <button class="option" data-option="d">d) style-type</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="a">
+            <div class="question">7. Which property sets the space between lines of text?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) line-height</button>
+                <button class="option" data-option="b">b) text-spacing</button>
+                <button class="option" data-option="c">c) line-spacing</button>
+                <button class="option" data-option="d">d) text-height</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="b">
+            <div class="question">8. What property sets the space between letters?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) text-spacing</button>
+                <button class="option" data-option="b">b) letter-spacing</button>
+                <button class="option" data-option="c">c) character-space</button>
+                <button class="option" data-option="d">d) font-spacing</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="d">
+            <div class="question">9. Which selector targets adjacent siblings?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) h1 > p</button>
+                <button class="option" data-option="b">b) h1 ~ p</button>
+                <button class="option" data-option="c">c) h1 p</button>
+                <button class="option" data-option="d">d) h1 + p</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-container" data-correct="c">
+            <div class="question">10. What property sets the font family?</div>
+            <div class="options">
+                <button class="option" data-option="a">a) text-family</button>
+                <button class="option" data-option="b">b) type-face</button>
+                <button class="option" data-option="c">c) font-family</button>
+                <button class="option" data-option="d">d) font-type</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <button class="submit-btn">Submit Quiz</button>
+        <div class="score-display"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const options = document.querySelectorAll('.option');
+            const submitBtn = document.querySelector('.submit-btn');
+            const scoreDisplay = document.querySelector('.score-display');
+            let score = 0;
+
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from siblings
+                    const siblings = this.parentElement.querySelectorAll('.option');
+                    siblings.forEach(sib => {
+                        sib.classList.remove('selected', 'correct', 'wrong');
+                    });
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                });
+            });
+
+            submitBtn.addEventListener('click', function() {
+                score = 0;
+                const questionContainers = document.querySelectorAll('.question-container');
+                
+                questionContainers.forEach(container => {
+                    const selectedOption = container.querySelector('.option.selected');
+                    const correctAnswer = container.dataset.correct;
+                    const feedback = container.querySelector('.feedback');
+                    
+                    // Clear previous feedback
+                    container.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('correct', 'wrong');
+                    });
+                    
+                    if (selectedOption) {
+                        const selectedValue = selectedOption.dataset.option;
+                        
+                        if (selectedValue === correctAnswer) {
+                            selectedOption.classList.add('correct');
+                            feedback.textContent = 'Correct!';
+                            feedback.className = 'feedback correct show';
+                            score++;
+                        } else {
+                            selectedOption.classList.add('wrong');
+                            const correctOption = container.querySelector(`[data-option="${correctAnswer}"]`);
+                            correctOption.classList.add('correct');
+                            feedback.textContent = 'Wrong! The correct answer is shown in green.';
+                            feedback.className = 'feedback wrong show';
+                        }
+                    } else {
+                        feedback.textContent = 'Please select an answer!';
+                        feedback.className = 'feedback wrong show';
+                    }
+                });
+
+                // Update and show score display
+                scoreDisplay.textContent = `Your Score: ${score} out of 10 (${(score/10*100).toFixed(0)}%)`;
+                scoreDisplay.className = 'score-display show';
+            });
+        });
+    </script>
+</body>
+</html>
